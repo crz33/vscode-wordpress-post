@@ -8,6 +8,9 @@
     "type": "git",
     "url": "https://github.com/crz33/vscode-wordpress-post"
   },
+  "bugs": {
+    "url": "https://github.com/crz33/vscode-wordpress-post/issues"
+  },
   "engines": {
     "vscode": "^1.63.0"
   },
