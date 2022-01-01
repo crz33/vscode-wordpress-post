@@ -1,45 +1,148 @@
 {
   "name": "wordpress-post",
-	"displayName": "wordpress-post",
-	"description": "",
-	"version": "0.0.1",
-	"engines": {
-		"vscode": "^1.63.0"
-	},
-	"categories": [
-		"Other"
-	],
-	"activationEvents": [
-        "onCommand:wordpress-post.helloWorld"
-	],
-	"main": "./out/extension.js",
-	"contributes": {
-		"commands": [
-			{
-				"command": "wordpress-post.helloWorld",
-				"title": "Hello World"
-			}
-		]
-	},
-	"scripts": {
-		"vscode:prepublish": "npm run compile",
-		"compile": "tsc -p ./",
-		"watch": "tsc -watch -p ./",
-		"pretest": "npm run compile && npm run lint",
-		"lint": "eslint src --ext ts",
-		"test": "node ./out/test/runTest.js"
-	},
-	"devDependencies": {
-		"@types/vscode": "^1.63.0",
-		"@types/glob": "^7.1.4",
-		"@types/mocha": "^9.0.0",
-		"@types/node": "14.x",
-		"@typescript-eslint/eslint-plugin": "^5.1.0",
-		"@typescript-eslint/parser": "^5.1.0",
-		"eslint": "^8.1.0",
-		"glob": "^7.1.7",
-		"mocha": "^9.1.3",
-		"typescript": "^4.4.4",
-		"@vscode/test-electron": "^1.6.2"
-	}
+  "displayName": "WordPress Post",
+  "description": "This extension posts articles to WordPress.",
+  "version": "0.0.1",
+  "publisher": "crz33",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/crz33/vscode-wordpress-post"
+  },
+  "bugs": {
+    "url": "https://github.com/crz33/vscode-wordpress-post/issues"
+  },
+  "engines": {
+    "vscode": "^1.63.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "license": "MIT",
+  "icon": "images/icon.png",
+  "keywords": [
+    "wordpress",
+    "post"
+  ],
+  "activationEvents": [
+    "onCommand:wordpress-post.post"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "wordpress-post.post",
+        "enablement": "editorLangId == markdown",
+        "title": "Post",
+        "category": "WordPress Post"
+      }
+    ],
+    "configuration": {
+      "title": "WordPress Post configuration",
+      "properties": {
+        "wordpress-post.siteUrl": {
+          "type": "string",
+          "default": "https://yoursite",
+          "description": "URL of WordPress, used create relative url"
+        },
+        "wordpress-post.apiUrl": {
+          "type": "string",
+          "default": "https://yoursite/wp-json/wp/v2",
+          "description": "URL of WordPress REST API"
+        },
+        "wordpress-post.authUser": {
+          "type": "string",
+          "default": "user",
+          "description": "User of WordPress REST API"
+        },
+        "wordpress-post.authPassword": {
+          "type": "string",
+          "default": "password",
+          "description": "Password of WordPress REST API"
+        },
+        "wordpress-post.slugKeys": {
+          "type": "string",
+          "default": "categories,tags",
+          "description": "List of slug to ID conversions"
+        },
+        "wordpress-post.defaultFeaturedImageId": {
+          "type": "number",
+          "default": 0,
+          "description": "The ID of the featured image when there was no image"
+        },
+        "wordpress-post.slugSepalator": {
+          "type": "string",
+          "default": "-",
+          "description": "Separator for file names to be added"
+        },
+        "wordpress-post.prefixFeaturedImageSlug": {
+          "type": "string",
+          "default": "",
+          "description": "Prefix of featured image slug"
+        },
+        "wordpress-post.suffixFeaturedImageSlug": {
+          "type": "string",
+          "default": "featured-image",
+          "description": "Suffix of featured image slug"
+        },
+        "wordpress-post.typeAttachedImageSlug": {
+          "type": "string",
+          "default": "prefix",
+          "description": "Processing rules for attached image file names.",
+          "enum": [
+            "prefix",
+            "suffix",
+            "none"
+          ],
+          "enumDescriptions": [
+            "Add a document slug prefix to the original file name",
+            "Add a document slug suffix to the original file name",
+            "Use original file name"
+          ]
+        },
+        "wordpress-post.mediaTypes": {
+          "type": "string",
+          "default": ".jpg,image/jpg;.jpeg,image/jpg;.png,image/png",
+          "description": "File extensions and media types to enable."
+        },
+        "wordpress-post.useLinkableImage": {
+          "type": "boolean",
+          "default": false,
+          "description": "Add a tag to img tag"
+        },
+        "wordpress-post.debug": {
+          "type": "boolean",
+          "default": false,
+          "description": "Debug of this extension."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/glob": "^7.1.4",
+    "@types/markdown-it": "^12.2.3",
+    "@types/mocha": "^9.0.0",
+    "@types/node": "14.x",
+    "@types/vscode": "^1.63.0",
+    "@typescript-eslint/eslint-plugin": "^5.1.0",
+    "@typescript-eslint/parser": "^5.1.0",
+    "@vscode/test-electron": "^1.6.2",
+    "eslint": "^8.1.0",
+    "glob": "^7.1.7",
+    "mocha": "^9.1.3",
+    "typescript": "^4.4.4"
+  },
+  "dependencies": {
+    "axios": "^0.24.0",
+    "cheerio": "^1.0.0-rc.10",
+    "gray-matter": "^4.0.3",
+    "markdown-it": "^12.3.0"
+  }
 }
