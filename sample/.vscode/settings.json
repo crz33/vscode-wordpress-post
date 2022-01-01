@@ -1,0 +1,10 @@
+{
+    "pasteImage.defaultName": "Y-MM-DD-HHmmss",
+    "pasteImage.path": "./img/",
+    "wordpress-post.debug": true,
+    "wordpress-post.siteUrl": "https://masa86.net",
+    "wordpress-post.apiUrl": "https://masa86.net/wp-json/wp/v2",
+    "wordpress-post.authUser": "myuser",
+    "wordpress-post.authPassword": "xxxx xxxx xxxx xxxx xxxx xxxx",
+    "wordpress-post.useLinkableImage": true
+}
