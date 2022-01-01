@@ -3,7 +3,7 @@
   "displayName": "WordPress Post",
   "description": "This extension posts articles to WordPress.",
   "version": "0.0.1",
-  "publisher": "crz33",
+  "publisher": "masa86",
   "repository": {
     "type": "git",
     "url": "https://github.com/crz33/vscode-wordpress-post"
