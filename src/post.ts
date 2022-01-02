@@ -39,11 +39,6 @@ export const post = async (context: Context) => {
   // post data
   const postData: { [key: string]: any } = {};
 
-  // document slug
-  context.debug(`[04S] detect document slug`);
-  postData["slug"] = docParsedPath.name;
-  context.debug(`[04E] detected document slug : ${postData["slug"]}`);
-
   // text -> frontmatter(markdown.data) and markdown(markdown.content)
   context.debug(`[05S] parse document`);
   const markdown = matter(doc.getText());
@@ -66,6 +61,13 @@ export const post = async (context: Context) => {
     context.debug(`[05I] frontmatter ${key} : ${postData[key]}`);
   }
   context.debug(`[05E] parse frontmatter`);
+
+  // document slug
+  context.debug(`[04S] detect document slug`);
+  if (!postData["slug"]) {
+    postData["slug"] = docParsedPath.name;
+  }
+  context.debug(`[04E] detected document slug : ${postData["slug"]}`);
 
   // markdown -> post data content
   context.debug(`[06S] convert to html`);
@@ -124,17 +126,24 @@ export const post = async (context: Context) => {
   context.debug(`[08E] updated html`);
 
   // featured image upload
-  context.debug(`[09S] upload featured image`);
-  const imgPath = findLocalFeaturedImage(context, docParsedPath);
-  if (imgPath === "") {
-    postData["featured_media"] = context.getDefaultFeaturedImageId();
-    context.debug(`[09E] has no image id: ${postData["featured_media"]}`);
-  } else {
-    const imgSlug = context.getFeaturedImageSlug(postData["slug"]);
-    context.debug(`[09I] upload featured image : ${imgPath} as ${imgSlug}`);
-    const imgItem = await uploadImage(context, imgSlug, imgPath);
-    postData["featured_media"] = imgItem["id"];
-    context.debug(`[09E] uploaded image id: ${postData["featured_media"]}`);
+  if (!postData["featured_media"]) {
+    context.debug(`[09S] upload featured image`);
+    const imgPath = findLocalFeaturedImage(context, docParsedPath);
+    if (imgPath === "") {
+      const defaultId = context.getDefaultFeaturedImageId();
+      if (defaultId >= 0) {
+        postData["featured_media"] = context.getDefaultFeaturedImageId();
+        context.debug(`[09E] has no image id: ${postData["featured_media"]}`);
+      } else {
+        context.debug(`[09E] has no image id (not set)`);
+      }
+    } else {
+      const imgSlug = context.getFeaturedImageSlug(postData["slug"]);
+      context.debug(`[09I] upload featured image : ${imgPath} as ${imgSlug}`);
+      const imgItem = await uploadImage(context, imgSlug, imgPath);
+      postData["featured_media"] = imgItem["id"];
+      context.debug(`[09E] uploaded image id: ${postData["featured_media"]}`);
+    }
   }
 
   // post
