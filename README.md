@@ -39,7 +39,7 @@ This is sample document of extention "WordPress Post".
 
 If you want to see all of the samples, go to the following URL
 
-[https://raw.githubusercontent.com/crz33/vscode-wordpress-post/feature/change-frontmatter/sample/my-sample.md](https://raw.githubusercontent.com/crz33/vscode-wordpress-post/feature/change-frontmatter/sample/my-sample.md)
+[https://raw.githubusercontent.com/crz33/vscode-wordpress-post/main/sample/my-sample.md](https://raw.githubusercontent.com/crz33/vscode-wordpress-post/main/sample/my-sample.md)
 
 ### Sample of WordPress Page
 
