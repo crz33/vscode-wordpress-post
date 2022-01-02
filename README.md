@@ -221,8 +221,8 @@ My setting.json is:
 ```json
 {
     "wordpress-post.debug": true,
-    "wordpress-post.siteUrl": "https://masa86.net",
-    "wordpress-post.apiUrl": "https://masa86.net/wp-json/wp/v2",
+    "wordpress-post.siteUrl": "https://mydomain",
+    "wordpress-post.apiUrl": "https://mydomain/wp-json/wp/v2",
     "wordpress-post.authUser": "myuser",
     "wordpress-post.authPassword": "xxxx xxxx xxxx xxxx xxxx xxxx",
     "wordpress-post.useLinkableImage": true
