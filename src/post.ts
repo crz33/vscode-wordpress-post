@@ -151,7 +151,7 @@ export const post = async (context: Context) => {
   const postItem = await getWpItem(
     context,
     "posts",
-    { slug: postData["slug"], status: "publish,draft" },
+    { slug: postData["slug"], status: "publish,future,draft,pending,private" },
     false
   );
   let postUrl = context.getUrl("posts");

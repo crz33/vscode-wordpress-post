@@ -146,7 +146,7 @@ title: Sample 04
 This is sample.
 
 ![Sample](img/2021-12-31-231548.png)
-```
+````
 
 If the image is located in the following file structure, find the image and upload it.
 
@@ -228,13 +228,3 @@ My setting.json is:
     "wordpress-post.useLinkableImage": true
 }
 ```
-
-## Release Notes
-
-### 0.0.1
-
-Initial release of my use case.
-
-### 0.0.2
-
-Adjusting frontmatter priority
