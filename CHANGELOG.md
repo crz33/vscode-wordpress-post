@@ -4,6 +4,12 @@
 
 - Initial major release
 
+## [0.0.5] - 2022-03-05
+
+### Changed
+
+- Remove sample from README
+
 ## [0.0.4] - 2022-01-04
 
 ### Changed

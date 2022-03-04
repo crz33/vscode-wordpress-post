@@ -2,7 +2,7 @@
   "name": "wordpress-post",
   "displayName": "WordPress Post",
   "description": "This extension posts articles to WordPress.",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "publisher": "masa86",
   "repository": {
     "type": "git",

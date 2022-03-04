@@ -41,12 +41,6 @@ If you want to see all of the samples, go to the following URL
 
 [https://raw.githubusercontent.com/crz33/vscode-wordpress-post/main/sample/my-sample.md](https://raw.githubusercontent.com/crz33/vscode-wordpress-post/main/sample/my-sample.md)
 
-### Sample of WordPress Page
-
-The following is a list of articles created with this extension.
-
-[https://masa86.net/my-sample/](https://masa86.net/my-sample/)
-
 ## Usage
 
 ### Minimum settings
