@@ -109,6 +109,24 @@
           "default": false,
           "description": "Add a tag to img tag"
         },
+        "wordpress-post.codeBlockLanguagePrefix": {
+          "type": "string",
+          "default": "language-",
+          "description": "Prefix of class name for code block"
+        },
+        "wordpress-post.codeBlockTag": {
+          "type": "string",
+          "default": "code",
+          "description" : "HTML tag which specifies language class",
+          "enum" : [
+            "code",
+            "pre"
+          ],
+          "enumDescriptions": [
+            "Add class for language to <code> tag",
+            "Add class for language to <pre> tag"
+          ]
+        },
         "wordpress-post.debug": {
           "type": "boolean",
           "default": false,
