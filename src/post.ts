@@ -70,7 +70,7 @@ export const post = async (context: Context) => {
 
   // markdown -> post data content
   context.debug(`[06S] convert to html`);
-  var md = require('markdown-it')({
+  const md = require('markdown-it')({
     highlight: function (str: string, lang: string) {
       return context.getCodeBlockStartTag(lang) + md.utils.escapeHtml(str) + context.getCodeBlockEndTag();
     }
