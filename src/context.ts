@@ -112,6 +112,22 @@ export class Context {
     return this.getConf("useLinkableImage");
   }
 
+  /**
+   * Code Block
+   */
+  getCodeBlockStartTag(lang: string) : string {
+    const prefix:string = this.getConf("codeBlockLanguagePrefix");
+    const tag:string = this.getConf("codeBlockTag");
+    if ( tag === "pre" ) {
+      return "<pre class=\"" + prefix + lang + "\"><code>";
+    } else {
+      return "<pre><code class=\"" + prefix + lang + "\">";
+    }
+  }
+  getCodeBlockEndTag() : string {
+    return "</code></pre>";
+  }
+
   getConf(id: string): any {
     return vscode.workspace.getConfiguration(this.prefixOfSettings).get(id);
   }
