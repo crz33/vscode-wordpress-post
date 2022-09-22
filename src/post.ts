@@ -29,8 +29,8 @@ export const post = async (context: Context) => {
 
   // check document file extension
   context.debug(`[03S] check file extension`);
-  if (docParsedPath.ext !== ".md") {
-    const msg = `Not a Markdow file: ${docParsedPath.base}`;
+  if (docParsedPath.ext !== ".md" && docParsedPath.ext !== ".html") {
+    const msg = `Not a Markdow or Html file: ${docParsedPath.base}`;
     context.debug(`[03Z] ${msg}`);
     throw new Error(msg);
   }
@@ -69,10 +69,18 @@ export const post = async (context: Context) => {
   }
   context.debug(`[04E] detected document slug : ${postData["slug"]}`);
 
-  // markdown -> post data content
-  context.debug(`[06S] convert to html`);
-  postData["content"] = MarkdownIt().render(markdown.content);
-  context.debug(`[06E] converted to html`);
+  // document content
+  if(docParsedPath.ext === ".md")
+  {
+      // markdown -> post data content
+      context.debug(`[06S] convert to html`);
+      postData["content"] = MarkdownIt().render(markdown.content);
+      context.debug(`[06E] converted to html`);
+  }
+  if(docParsedPath.ext === ".html")
+  {
+      postData["content"] = markdown.content;
+  } 
 
   // upload attached image file, change src
   context.debug(`[07S] process attached images`);

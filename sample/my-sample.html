@@ -1,0 +1,64 @@
+---
+title: Sample documents of extention "WordPress Post"
+status: publish
+date: "2021-12-31T23:00:00"
+categories: [vscode]
+tags: [vscode, typescript]
+---
+
+<p>This is sample document of extention "WordPress Post".
+    Test of Line Break.</p>
+<p>Test of new paragraph.</p>
+<h2>Test of headline level 2</h2>
+<p>Test of headline level 2.</p>
+<h3>Test of headline level 3</h3>
+<p>Test of headline level 3.</p>
+<h2>Test of codeblock</h2>
+
+<pre>
+    <code class="language-python">
+    import requests
+    SITE_URL = "https://yoursite"
+    API_URL = f"{SITE_URL}/wp-json/wp/v2/"
+    AUTH_USER = "zzzz"
+    AUTH_PASS = "xxxx xxxx xxxx xxxx xxxx IxxxxYT4"
+    
+    res = requests.get(API_URL, auth=(AUTH_USER, AUTH_PASS))
+    print(res.json())
+    </code>
+</pre>
+
+<h2>Test of table</h2>
+<table>
+    <thead>
+        <tr>
+            <th>label</th>
+            <th>API</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>category</td>
+            <td>/wp-json/wp/v2/categories</td>
+        </tr>
+        <tr>
+            <td>tag</td>
+            <td>/wp-json/wp/v2/tags</td>
+        </tr>
+        <tr>
+            <td>media</td>
+            <td>/wp-json/wp/v2/media</td>
+        </tr>
+        <tr>
+            <td>post</td>
+            <td>/wp-json/wp/v2/posts</td>
+        </tr>
+    </tbody>
+</table>
+<h2>Test of image</h2>
+<p>Abount local(relative path) image, this extention uploads and replaces local url to wordpress url:</p>
+<p><img src="img/2021-12-31-231548.png" alt="front-matter"></p>
+<p>Abount www() image, this extension is ignore this.</p>
+<p><img src="https://picsum.photos/id/2/760/400" alt="sample image"></p>
+<h2>Done</h2>
+<p>That's all.</p>
